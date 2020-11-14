@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@*": ["./*"]
+    },
+    "outDir": "dist",
+    "lib": ["dom", "es6", "dom.iterable"],
+    "types": [],
+    "typeRoots": ["node_modules/@types"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "ES2019",
+    "incremental": true,
+    "declaration": true,
+    "allowJs": true,
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
