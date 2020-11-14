@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+message joinRequest {
+    string roomCode = 1;
+    string nickName = 2;
+}
+
+message joinResponse {
+    int32 status = 1;
+    uint32 playerId = 2;
+}
+
+message gamePlayer {
+    uint32 playerId = 1;
+    string nickName = 2;
+    uint32 score = 3;
+}
+
+message gameRoomStatus {
+    bool gameStarted = 1;
+    repeated gamePlayer members = 2;
+}
+
+// game begins
+
+message Position {
+    float x = 1;
+    float y = 2;
+}
+
+message PlayerStatus {
+    uint32 playerId = 1;
+    Position pos = 2;
+    bool shoot = 3;
+}
+
+message GameStatus {
+    Position boardPos = 1;
+    repeated gamePlayer members = 2;
+}
+
+service GameHost {
+    rpc pushRoomStatus(gameRoomStatus) returns (google.protobuf.Empty);
+    rpc pushGameStatus(GameStatus) returns (google.protobuf.Empty);
+}
+
+service GameClient {
+    rpc joinRoom(joinRequest) returns (joinResponse);
+    rpc sendPlayerStatus(PlayerStatus) returns (google.protobuf.Empty) {};
+}
